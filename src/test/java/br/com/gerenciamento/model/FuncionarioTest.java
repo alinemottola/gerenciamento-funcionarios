@@ -35,4 +35,20 @@ public class FuncionarioTest {
         });
     }
 
+    @Test
+    void naoDeveAceitarNomeVazio() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            new Funcionario(
+                    3, "", "12345678909", 3000.00
+            ){
+                @Override
+                public double calcularRemuneracao() {
+                    return 3000.00;
+                }
+            };
+        });
+    }
+
 }
