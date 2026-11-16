@@ -67,4 +67,28 @@ public class FuncionarioTest {
         });
     }
 
+    @Test
+    void naoDeveAceitarCpfComDigitosRepetidos() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Funcionario(5, "Pedro", "11111111111", 3000) {
+                @Override
+                public double calcularRemuneracao() {
+                    return 3000;
+                }
+            };
+        });
+    }
+
+    @Test
+    void naoDeveAceitarCpfComDigitosVerificadoresErrados() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Funcionario(6, "Joao", "12345678900", 3000) {
+                @Override
+                public double calcularRemuneracao() {
+                    return 3000;
+                }
+            };
+        });
+    }
+
 }
