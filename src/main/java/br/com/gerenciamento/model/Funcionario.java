@@ -8,6 +8,11 @@ public abstract class Funcionario implements Identificavel {
     private double salarioBase;
 
     public Funcionario(int codigo, String nome, String cpf, double salarioBase) {
+
+        if (salarioBase < 0) {
+            throw new IllegalArgumentException("O salário não pode ser negativo.");
+        }
+
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
