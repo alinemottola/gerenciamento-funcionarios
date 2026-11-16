@@ -2,6 +2,7 @@ package br.com.gerenciamento.model;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FuncionarioTest {
 
@@ -18,4 +19,20 @@ public class FuncionarioTest {
 
         assertEquals(1, funcionario.getCodigo());
     }
+
+    @Test
+    void naoDeveAceitarSalarioNegativo() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            new Funcionario(
+                    2, "Carlos Silva", "12345678909", -2000.00
+            ){
+                @Override public double calcularRemuneracao() {
+                    return 0;
+                }
+            };
+        });
+    }
+
 }
