@@ -51,4 +51,20 @@ public class FuncionarioTest {
         });
     }
 
+    @Test
+    void naoDeveAceitarCpfInvalido() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            new Funcionario(
+                    4, "Maria Pereira", "123", 3000.00
+            ){
+                @Override
+                public double calcularRemuneracao() {
+                    return 3000.00;
+                }
+            };
+        });
+    }
+
 }
